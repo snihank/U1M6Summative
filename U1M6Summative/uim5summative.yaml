@@ -1,0 +1,305 @@
+openapi: 3.0.0
+info:
+  title: U1M6Summative
+  description: >-
+    A simple web-service for rental store
+  version: 0.0.1
+servers:
+  - url: 'http://localhost:8081'
+    description: Local dev server
+paths:
+  /customers:
+    get:
+      summary: Retrieves list of all customers
+      responses:
+        '200':
+          description: A list of customers
+          content:
+            application/json:
+              schema:
+                type: object
+                items: 
+                  $ref: '#/components/schemas/Customer'
+  /customer:
+    post:
+      summary: Creates single customer based on customerId
+      description: customerId is primary key
+      parameters: 
+        - name: Id
+          in: path
+          required: true
+          description: customerId to create a customer
+          schema:
+            type: number
+            format: int64
+            minimum: 1
+            maximum: 11
+      responses:
+        '200':
+          description: An object of customer
+          content:
+            application/json:
+              schema:
+                type: object
+                items: 
+                  $ref: '#/components/schemas/Customer'
+
+    put:
+      summary: Updates a single customer based on id
+      description: customerId is primary key
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: customerId for a specific customer
+          schema:
+            type: number
+            format: int64
+            minimum: 1
+            maximum: 11
+      responses:
+        '200':
+          description: An object of customers
+          content:
+            application/json:
+              schema:
+                type: object
+                items: 
+                  $ref: '#/components/schemas/Customer'
+    delete:
+      summary: Deletes a single customer based on id
+      description: customerId is primary key
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: customerId for a specific customer
+          schema:
+            type: number
+            format: int64
+            minimum: 1
+            maximum: 11
+      responses:
+        '200':
+          description: A message
+          content:
+            application/json:
+              schema:
+                type: string
+                items: 
+                  $ref: '#/components/schemas/Customer'
+  /items:
+    get:
+      summary: Retrieves list of all items
+      responses:
+        '200':
+          description: A list of items
+          content:
+            application/json:
+              schema:
+                type: object
+                items: 
+                  $ref: '#/components/schemas/Item'
+  /item:
+    post:
+      summary: Creates single item based on ItemId
+      description: itemId is primary key
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: itemId to create an item
+          schema:
+            type: number
+            format: int64
+            minimum: 1
+            maximum: 11
+      responses:
+        '200':
+          description: An object of item
+          content:
+            application/json:
+              schema:
+                type: object
+                items: 
+                  $ref: '#/components/schemas/Item'
+
+    put:
+      summary: Updates a single item based on itemId
+      description: itemId is primary key
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: itemId for a specific item
+          schema:
+            type: number
+            format: int64
+            minimum: 1
+            maximum: 11
+      responses:
+        '200':
+          description: An object of item
+          content:
+            application/json:
+              schema:
+                type: object
+                items: 
+                  $ref: '#/components/schemas/Item'
+    delete:
+      summary: Deletes a single item based on itemId
+      description: itemId is primary key
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: itemId for a specific item
+          schema:
+            type: number
+            format: int64
+            minimum: 1
+            maximum: 11
+      responses:
+        '200':
+          description: A message
+          content:
+            application/json:
+              schema:
+                type: string
+                items: 
+                  $ref: '#/components/schemas/Item'
+  /invoice/{id}:
+    get:
+      summary: Retrieves single invoice based on invoiceItems
+      description: invoiceId is primary key
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: invoiceId to retrieve an invoice based on invoiceItems
+          schema:
+            type: number
+            format: int64
+            minimum: 1
+            maximum: 11
+      responses:
+        '200':
+          description: An object of invoice
+          content:
+            application/json:
+              schema:
+                type: object
+                items: 
+                  $ref: '#/components/schemas/Item'
+  /invoice:
+    post:
+      summary: Creates single item based on ItemId
+      description: invoiceId is primary key
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: invoiceId to create an invoice
+          schema:
+            type: number
+            format: int64
+            minimum: 1
+            maximum: 11
+      responses:
+        '200':
+          description: An object of invoice
+          content:
+            application/json:
+              schema:
+                type: object
+                items: 
+                  $ref: '#/components/schemas/Item'
+  
+
+
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        customerId:
+          type: number
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+      required:
+        - customer
+        - firstName
+        - lastName
+        - email
+        - company
+        - phone
+
+    Invoice:
+      properties:
+        invoiceId:
+          type: number
+        customerId:
+          type: number
+        orderDate:
+          type: object
+        pickupDate:
+          type: object
+        returnDate:
+          type: object
+        lateFee:
+          type: integer
+      required:
+        - invoiceId
+        - customerId
+        - orderDate
+        - pickupDate
+        - returnDate
+        - lateFee
+
+    Item:
+      properties:
+        itemId:
+          type: number
+        name:
+          type: string
+        description:
+          type: string
+        dailyRate:
+          type: integer
+      required:
+        - itemId
+        - name
+        - dailyRate
+        
+    InvoiceItem:
+      properties:
+        invoiceItemId:
+          type: number
+        invoiceId:
+          type: number
+        itemId:
+          type: number
+        quantity:
+          type: number
+        unitRate:
+          type: integer
+        discount:
+          type: integer
+      required: 
+        - invoiceItemId
+        - invoiceId
+        - itemId
+        - quantity
+        - unitRate
+        - discount
+        
+
+
