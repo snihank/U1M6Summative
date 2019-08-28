@@ -1,8 +1,12 @@
 package com.company.U1M6Summative.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Objects;
 
 public class Customer {
+    @Id
+    @GeneratedValue
     private int customerId;
     private String firstName;
     private String lastName;
