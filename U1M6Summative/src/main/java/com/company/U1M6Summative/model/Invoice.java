@@ -1,10 +1,13 @@
 package com.company.U1M6Summative.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Invoice {
-
+    @Id
+    @GeneratedValue
     private int invoiceId;
     private int customerId;
     private LocalDate orderDate;

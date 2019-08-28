@@ -1,9 +1,12 @@
 package com.company.U1M6Summative.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Objects;
 
 public class InvoiceItem {
-
+    @Id
+    @GeneratedValue
     private int invoiceItemId;
     private int invoiceId;
     private int itemId;
