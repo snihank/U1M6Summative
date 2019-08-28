@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RetailStoreController {
     @Autowired
     private ServiceLayer serviceLayer;
-
+//    ReadCustomers
     @RequestMapping(value="/customers", method = RequestMethod.GET)
     public Customer getAllCustomers() {
 
