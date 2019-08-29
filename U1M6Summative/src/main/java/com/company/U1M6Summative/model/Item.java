@@ -49,14 +49,14 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return itemId == item.itemId &&
-                Double.compare(item.dailyRate, dailyRate) == 0 &&
-                name.equals(item.name) &&
-                description.equals(item.description);
+        return getItemId() == item.getItemId() &&
+                Double.compare(item.getDailyRate(), getDailyRate()) == 0 &&
+                Objects.equals(getName(), item.getName()) &&
+                Objects.equals(getDescription(), item.getDescription());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemId, name, description, dailyRate);
+        return Objects.hash(getItemId(), getName(), getDescription(), getDailyRate());
     }
 }
