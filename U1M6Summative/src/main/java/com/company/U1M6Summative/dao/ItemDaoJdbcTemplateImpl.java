@@ -30,6 +30,8 @@ public class ItemDaoJdbcTemplateImpl implements ItemDao {
     private static final String DELETE_ITEM_SQL =
             "delete from item where item_id = ?";
 
+    private static final String SELECT_ITEM_BY_ID_SQL =
+            "select * from invoice_item where item_id = ?";
 
     @Autowired
     public ItemDaoJdbcTemplateImpl(JdbcTemplate jdbcTemplate) {
@@ -62,6 +64,7 @@ public class ItemDaoJdbcTemplateImpl implements ItemDao {
     public List<Item> getAllItems() {
         return jdbcTemplate.query(SELECT_ALL_ITEMS_SQL, this::mapRowToItem);
     }
+
 
     @Override
     public void updateItem(Item item) {
