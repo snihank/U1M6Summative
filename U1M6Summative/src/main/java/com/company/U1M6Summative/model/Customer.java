@@ -67,16 +67,16 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return customerId == customer.customerId &&
-                firstName.equals(customer.firstName) &&
-                lastName.equals(customer.lastName) &&
-                email.equals(customer.email) &&
-                company.equals(customer.company) &&
-                phone.equals(customer.phone);
+        return getCustomerId() == customer.getCustomerId() &&
+                Objects.equals(getFirstName(), customer.getFirstName()) &&
+                Objects.equals(getLastName(), customer.getLastName()) &&
+                Objects.equals(getEmail(), customer.getEmail()) &&
+                Objects.equals(getCompany(), customer.getCompany()) &&
+                Objects.equals(getPhone(), customer.getPhone());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(customerId, firstName, lastName, email, company, phone);
+        return Objects.hash(getCustomerId(), getFirstName(), getLastName(), getEmail(), getCompany(), getPhone());
     }
 }

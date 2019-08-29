@@ -67,16 +67,16 @@ public class InvoiceItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceItem that = (InvoiceItem) o;
-        return invoiceItemId == that.invoiceItemId &&
-                invoiceId == that.invoiceId &&
-                itemId == that.itemId &&
-                quantity == that.quantity &&
-                Double.compare(that.unitRate, unitRate) == 0 &&
-                Double.compare(that.discount, discount) == 0;
+        return getInvoiceItemId() == that.getInvoiceItemId() &&
+                getInvoiceId() == that.getInvoiceId() &&
+                getItemId() == that.getItemId() &&
+                getQuantity() == that.getQuantity() &&
+                Double.compare(that.getUnitRate(), getUnitRate()) == 0 &&
+                Double.compare(that.getDiscount(), getDiscount()) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(invoiceItemId, invoiceId, itemId, quantity, unitRate, discount);
+        return Objects.hash(getInvoiceItemId(), getInvoiceId(), getItemId(), getQuantity(), getUnitRate(), getDiscount());
     }
 }
