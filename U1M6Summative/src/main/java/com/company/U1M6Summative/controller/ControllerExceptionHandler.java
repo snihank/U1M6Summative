@@ -22,5 +22,4 @@ public class ControllerExceptionHandler {
         return responseEntity;
     }
 
-
 }

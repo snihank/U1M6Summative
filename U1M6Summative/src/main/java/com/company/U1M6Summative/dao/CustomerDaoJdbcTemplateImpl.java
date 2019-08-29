@@ -55,7 +55,6 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
 
     }
 
-
     @Override
     public Customer getCustomer(int id) {
         try {

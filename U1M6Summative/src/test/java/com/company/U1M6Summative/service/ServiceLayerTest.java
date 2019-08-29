@@ -30,9 +30,7 @@ public class ServiceLayerTest {
         setUpInvoiceItemDaoMock();
         setUpItemDaoMock();
 
-
         service = new ServiceLayer(customerDao, invoiceDao, invoiceItemDao, itemDao);
-
     }
 
     // Helper methods
@@ -127,7 +125,7 @@ public class ServiceLayerTest {
     }
 
     private void setUpInvoiceItemDaoMock() {
-        invoiceDao = mock(InvoiceItemDaoJdbcTemplateImpl.class);
+        invoiceItemDao = mock(InvoiceItemDaoJdbcTemplateImpl.class);
         InvoiceItem invt = new InvoiceItem();
         invt.setInvoiceItemId(1);
         invt.setInvoiceId(3);
