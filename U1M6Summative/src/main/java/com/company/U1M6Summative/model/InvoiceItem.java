@@ -2,6 +2,7 @@ package com.company.U1M6Summative.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class InvoiceItem {
@@ -11,8 +12,8 @@ public class InvoiceItem {
     private int invoiceId;
     private int itemId;
     private int quantity;
-    private double unitRate;
-    private double discount;
+    private BigDecimal unitRate;
+    private BigDecimal discount;
 
     public int getInvoiceItemId() {
         return invoiceItemId;
@@ -46,19 +47,19 @@ public class InvoiceItem {
         this.quantity = quantity;
     }
 
-    public double getUnitRate() {
+    public BigDecimal getUnitRate() {
         return unitRate;
     }
 
-    public void setUnitRate(double unitRate) {
+    public void setUnitRate(BigDecimal unitRate) {
         this.unitRate = unitRate;
     }
 
-    public double getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 
@@ -71,8 +72,8 @@ public class InvoiceItem {
                 getInvoiceId() == that.getInvoiceId() &&
                 getItemId() == that.getItemId() &&
                 getQuantity() == that.getQuantity() &&
-                Double.compare(that.getUnitRate(), getUnitRate()) == 0 &&
-                Double.compare(that.getDiscount(), getDiscount()) == 0;
+                Objects.equals(getUnitRate(), that.getUnitRate()) &&
+                Objects.equals(getDiscount(), that.getDiscount());
     }
 
     @Override
