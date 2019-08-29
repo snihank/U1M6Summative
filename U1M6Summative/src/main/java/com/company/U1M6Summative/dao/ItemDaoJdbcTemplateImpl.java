@@ -1,10 +1,14 @@
 package com.company.U1M6Summative.dao;
 
 import com.company.U1M6Summative.model.Item;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class ItemDaoJdbcTemplateImpl implements ItemDao {
+
+
     @Override
     public Item addItem(Item item) {
         return null;
