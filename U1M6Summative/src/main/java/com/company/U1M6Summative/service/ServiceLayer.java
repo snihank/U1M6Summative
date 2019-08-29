@@ -4,8 +4,16 @@ import com.company.U1M6Summative.dao.CustomerDao;
 import com.company.U1M6Summative.dao.InvoiceDao;
 import com.company.U1M6Summative.dao.InvoiceItemDao;
 import com.company.U1M6Summative.dao.ItemDao;
+import com.company.U1M6Summative.model.Customer;
+import com.company.U1M6Summative.model.Invoice;
+import com.company.U1M6Summative.model.InvoiceItem;
+import com.company.U1M6Summative.viewmodel.CustomerViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component
 public class ServiceLayer {
 
     private CustomerDao customerDao;
@@ -20,4 +28,11 @@ public class ServiceLayer {
         this.invoiceItemDao = invoiceItemDao;
         this.itemDao = itemDao;
     }
+
+    // HELPER METHOD
+//    public CustomerViewModel buildInvoiceViewModel(Customer customer) {
+//        Invoice invoice = invoiceDao.getInvoice(customer.)
+//    }
+
+
 }

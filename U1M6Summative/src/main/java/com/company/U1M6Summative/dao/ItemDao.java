@@ -5,6 +5,7 @@ import com.company.U1M6Summative.model.Item;
 import java.util.List;
 
 public interface ItemDao {
+
     Item addItem(Item item);
     Item getItem(int id);
     List<Item> getAllItems();

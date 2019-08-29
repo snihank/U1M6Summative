@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //package com.company.U1M6Summative.controller;
 //
 //import com.company.U1M6Summative.model.Customer;
@@ -12,6 +13,22 @@
 //    @Autowired
 //    private ServiceLayer serviceLayer;
 //
+=======
+package com.company.U1M6Summative.controller;
+
+import com.company.U1M6Summative.model.Customer;
+import com.company.U1M6Summative.service.ServiceLayer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class RetailStoreController {
+    @Autowired
+    private ServiceLayer serviceLayer;
+//    ReadCustomers
+>>>>>>> master
 //    @RequestMapping(value="/customers", method = RequestMethod.GET)
 //    public Customer getAllCustomers() {
 //
@@ -66,5 +83,10 @@
 //        List<Note> noteList =  noteRepo.findAll();
 //        return noteList;
 //    }
+<<<<<<< HEAD
 //
 //}
+=======
+
+}
+>>>>>>> master

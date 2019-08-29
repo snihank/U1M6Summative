@@ -11,7 +11,4 @@ public interface InvoiceItemDao {
     void updateInvoiceItem(InvoiceItem invoiceItem);
     void deleteInvoiceItem(int id);
 
-
-
-
 }

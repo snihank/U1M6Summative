@@ -1,5 +1,6 @@
 package com.company.U1M6Summative.dao;
 
+<<<<<<< HEAD
 
 import com.company.U1M6Summative.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,12 +64,31 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
         }catch(EmptyResultDataAccessException e){
             return null;
         }
+=======
+import com.company.U1M6Summative.model.Customer;
+
+import java.util.List;
+
+public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
+    @Override
+    public Customer addCustomer(Customer customer) {
+        return null;
+    }
+
+    @Override
+    public Customer getCustomer(int id) {
+        return null;
+>>>>>>> master
     }
 
     @Override
     public List<Customer> getAllCustomers() {
+<<<<<<< HEAD
         return jdbcTemplate.query(SELECT_ALL_CUSTOMERS_SQL,this::mapRowToCustomer);
 
+=======
+        return null;
+>>>>>>> master
     }
 
     @Override
@@ -78,6 +98,7 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
 
     @Override
     public void deleteCustomer(int id) {
+<<<<<<< HEAD
         jdbcTemplate.update(DELETE_CUSTOMER_SQL,id);
 
     }
@@ -93,5 +114,8 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
         customer.setPhone(rs.getString("phone"));
 
         return customer;
+=======
+
+>>>>>>> master
     }
 }
