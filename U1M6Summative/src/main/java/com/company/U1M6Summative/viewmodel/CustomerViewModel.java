@@ -9,7 +9,7 @@ import com.company.U1M6Summative.model.Item;
 import java.util.List;
 import java.util.Objects;
 
-public class InvoiceViewModel {
+public class CustomerViewModel {
     private int id;
     private Customer customer;
     private Invoice invoice;
@@ -60,7 +60,7 @@ public class InvoiceViewModel {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        InvoiceViewModel that = (InvoiceViewModel) o;
+        CustomerViewModel that = (CustomerViewModel) o;
         return id == that.id &&
                 customer.equals(that.customer) &&
                 invoice.equals(that.invoice) &&
