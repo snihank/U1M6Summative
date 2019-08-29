@@ -98,7 +98,6 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
         customer.setPhone(rs.getString("phone"));
 
         return customer;
-
     }
 
 }
