@@ -21,20 +21,21 @@ public class CustomerDaoJdbcTemplateImplTest {
     @Autowired
     protected CustomerDao customerDao;
 
-//    @Autowired
-//    protected InvoiceDao invoiceDao;
+    @Autowired
+    protected InvoiceDao invoiceDao;
 
     @Before
     public void setUp() throws Exception{
+
+        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
+
+        invoiceList.stream()
+                .forEach(invoice -> invoiceDao.deleteInvoice(invoice.getInvoiceId()));
+
         List<Customer> customerList = customerDao.getAllCustomers();
 
         customerList.stream()
                 .forEach(customer -> customerDao.deleteCustomer(customer.getCustomerId()));
-
-//        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
-//
-//        invoiceList.stream()
-//                .forEach(invoice -> invoiceDao.deleteInvoice(invoice.getInvoiceId()));
     }
     @After
     public void tearDown() throws Exception{

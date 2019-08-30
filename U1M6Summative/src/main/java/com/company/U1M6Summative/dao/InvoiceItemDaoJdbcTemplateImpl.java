@@ -36,7 +36,7 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
                     "where invoice_item_id = ?";
 
     private static final String DELETE_INVOICE_SQL =
-            "delete from invoice where invoice_item_id = ?";
+            "delete from invoice_item where invoice_item_id = ?";
 
     @Autowired
     public InvoiceItemDaoJdbcTemplateImpl(JdbcTemplate jdbcTemplate) {
@@ -52,7 +52,7 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
                 invoiceItem.getUnitRate(),
                 invoiceItem.getDiscount());
 
-        int id = jdbcTemplate.queryForObject("select LAST_INSERT_ID", Integer.class);
+        int id = jdbcTemplate.queryForObject("select LAST_INSERT_ID()", Integer.class);
         invoiceItem.setInvoiceItemId(id);
 
         return invoiceItem;
@@ -94,8 +94,8 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
         invoiceItem.setInvoiceId(rs.getInt("invoice_item_id"));
         invoiceItem.setItemId(rs.getInt("item_id"));
         invoiceItem.setQuantity(rs.getInt("quantity"));
-        invoiceItem.setUnitRate(rs.getBigDecimal("unit_price"));
-        invoiceItem.setDiscount(rs.getBigDecimal("return_date"));
+        invoiceItem.setUnitRate(rs.getBigDecimal("unit_rate"));
+        invoiceItem.setDiscount(rs.getBigDecimal("discount"));
 
         return invoiceItem;
     }
