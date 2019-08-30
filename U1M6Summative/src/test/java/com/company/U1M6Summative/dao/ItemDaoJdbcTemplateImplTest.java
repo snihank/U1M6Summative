@@ -1,6 +1,9 @@
 package com.company.U1M6Summative.dao;
 
 
+import com.company.U1M6Summative.model.Customer;
+import com.company.U1M6Summative.model.Invoice;
+import com.company.U1M6Summative.model.InvoiceItem;
 import com.company.U1M6Summative.model.Item;
 import org.junit.After;
 import org.junit.Before;
@@ -19,15 +22,42 @@ import static org.junit.Assert.assertNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class ItemDaoJdbcTemplateImplTest {
+
+
+
+
     @Autowired
     protected ItemDao itemDao;
+
+    @Autowired
+    protected CustomerDao customerDao;
+
+    @Autowired
+    protected InvoiceDao invoiceDao;
+
+    @Autowired
+    protected InvoiceItemDao invoiceItemDao;
 
     @Before
     public void setUp() throws Exception{
         List<Item>itemList = itemDao.getAllItems();
+        List<Customer>customerList = customerDao.getAllCustomers();
+        List<Invoice>invoiceList = invoiceDao.getAllInvoices();
+        List<InvoiceItem>invoiceItemList = invoiceItemDao.getAllInvoiceItems();
+
+        invoiceItemList.stream()
+                .forEach(invoiceItem -> invoiceItemDao.deleteInvoiceItem(invoiceItem.getInvoiceItemId()));
 
         itemList.stream()
                 .forEach(item -> itemDao.deleteItem(item.getItemId()));
+
+        invoiceList.stream()
+                .forEach(invoice -> invoiceDao.deleteInvoice(invoice.getInvoiceId()));
+
+        customerList.stream()
+                .forEach(customer -> customerDao.deleteCustomer(customer.getCustomerId()));
+
+
     }
 
     @After

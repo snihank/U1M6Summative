@@ -91,7 +91,8 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     // HELPER METHOD
     private InvoiceItem mapRowToInvoice(ResultSet rs, int rowNum) throws SQLException {
         InvoiceItem invoiceItem = new InvoiceItem();
-        invoiceItem.setInvoiceId(rs.getInt("invoice_item_id"));
+        invoiceItem.setInvoiceItemId(rs.getInt("invoice_item_id"));
+        invoiceItem.setInvoiceId(rs.getInt("invoice_id"));
         invoiceItem.setItemId(rs.getInt("item_id"));
         invoiceItem.setQuantity(rs.getInt("quantity"));
         invoiceItem.setUnitRate(rs.getBigDecimal("unit_rate"));
