@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
+
 public class CustomerDaoJdbcTemplateImplTest {
 
     @Autowired
@@ -28,7 +29,6 @@ public class CustomerDaoJdbcTemplateImplTest {
 
     @Autowired
     protected InvoiceDao invoiceDao;
-
 
     @Autowired
     protected InvoiceItemDao invoiceItemDao;
@@ -44,16 +44,8 @@ public class CustomerDaoJdbcTemplateImplTest {
                 .forEach(invoiceItem -> invoiceItemDao.deleteInvoiceItem(invoiceItem.getInvoiceItemId()));
 
 
-
-    @Before
-    public void setUp() throws Exception{
-
-        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
-
-
         invoiceList.stream()
                 .forEach(invoice -> invoiceDao.deleteInvoice(invoice.getInvoiceId()));
-
 
         itemList.stream()
                 .forEach(item -> itemDao.deleteItem(item.getItemId()));
@@ -63,12 +55,6 @@ public class CustomerDaoJdbcTemplateImplTest {
                 .forEach(customer -> customerDao.deleteCustomer(customer.getCustomerId()));
 
 
-
-
-        List<Customer> customerList = customerDao.getAllCustomers();
-
-        customerList.stream()
-                .forEach(customer -> customerDao.deleteCustomer(customer.getCustomerId()));
 
     }
     @After
@@ -148,13 +134,4 @@ public class CustomerDaoJdbcTemplateImplTest {
         assertEquals(cust2,cust);
 
     }
-    /*
-     private int customerId;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String company;
-    private String phone;
-     */
-
 }

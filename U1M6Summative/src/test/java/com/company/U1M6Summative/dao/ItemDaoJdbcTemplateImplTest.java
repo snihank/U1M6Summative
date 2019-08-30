@@ -131,8 +131,4 @@ public class ItemDaoJdbcTemplateImplTest {
         assertEquals(itemList.size(),4);
 
     }
-
-
-
 }
-

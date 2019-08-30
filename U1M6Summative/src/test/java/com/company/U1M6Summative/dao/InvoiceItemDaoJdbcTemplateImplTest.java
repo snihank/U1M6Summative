@@ -108,6 +108,127 @@ public class InvoiceItemDaoJdbcTemplateImplTest {
 
     }
 
+    @Test
+    public void getAllInvoiceItems(){
 
+        Customer cust = new Customer();
+        cust.setFirstName("Mark");
+        cust.setLastName("Zuck");
+        cust.setEmail("MarkZ@fb.com");
+        cust.setCompany("Facebook");
+        cust.setPhone("2129991010");
+
+        cust = customerDao.addCustomer(cust);
+
+
+        Item it = new Item();
+        it.setName("Iphonex");
+        it.setDescription("Apples newest smartphone");
+        it.setDailyRate(new BigDecimal("59.99"));
+
+        it = itemDao.addItem(it);
+
+
+        Invoice inv = new Invoice();
+        inv.setCustomerId(cust.getCustomerId());
+        inv.setOrderDate(LocalDate.of(2019,8,29));
+        inv.setPickupDate(LocalDate.of(2019,8,31));
+        inv.setReturnDate(LocalDate.of(2019,9,4));
+        inv.setLateFee(new BigDecimal("3.99"));
+        inv = invoiceDao.addInvoice(inv);
+
+        InvoiceItem invItem = new InvoiceItem();
+        invItem.setInvoiceId(inv.getInvoiceId());
+        invItem.setItemId(it.getItemId());
+        invItem.setQuantity(3);
+        invItem.setUnitRate(new BigDecimal("19.99"));
+        invItem.setDiscount(new BigDecimal("10.15"));
+
+        invoiceItemDao.addInvoiceItem(invItem);
+
+        cust = new Customer();
+        cust.setFirstName("Mark");
+        cust.setLastName("Z");
+        cust.setEmail("MZ@fb.com");
+        cust.setCompany("Facebook");
+        cust.setPhone("2129991010");
+
+        cust = customerDao.addCustomer(cust);
+
+
+        it = new Item();
+        it.setName("Iphonex");
+        it.setDescription("Apples newest smartphone");
+        it.setDailyRate(new BigDecimal("59.99"));
+
+        it = itemDao.addItem(it);
+
+
+        inv = new Invoice();
+        inv.setCustomerId(cust.getCustomerId());
+        inv.setOrderDate(LocalDate.of(2019,8,29));
+        inv.setPickupDate(LocalDate.of(2019,8,31));
+        inv.setReturnDate(LocalDate.of(2019,9,4));
+        inv.setLateFee(new BigDecimal("3.99"));
+        inv = invoiceDao.addInvoice(inv);
+
+        invItem = new InvoiceItem();
+        invItem.setInvoiceId(inv.getInvoiceId());
+        invItem.setItemId(it.getItemId());
+        invItem.setQuantity(3);
+        invItem.setUnitRate(new BigDecimal("19.99"));
+        invItem.setDiscount(new BigDecimal("10.15"));
+        invoiceItemDao.addInvoiceItem(invItem);
+
+        List<InvoiceItem> iList = invoiceItemDao.getAllInvoiceItems();
+        assertEquals(iList.size(),2);
+    }
+
+    @Test
+    public void updateInvoiceItem(){
+        Customer cust = new Customer();
+        cust.setFirstName("Mark");
+        cust.setLastName("Zuck");
+        cust.setEmail("MarkZ@fb.com");
+        cust.setCompany("Facebook");
+        cust.setPhone("2129991010");
+
+        cust = customerDao.addCustomer(cust);
+
+
+        Item it = new Item();
+        it.setName("Iphonex");
+        it.setDescription("Apples newest smartphone");
+        it.setDailyRate(new BigDecimal("59.99"));
+
+        it = itemDao.addItem(it);
+
+
+        Invoice inv = new Invoice();
+        inv.setCustomerId(cust.getCustomerId());
+        inv.setOrderDate(LocalDate.of(2019,8,29));
+        inv.setPickupDate(LocalDate.of(2019,8,31));
+        inv.setReturnDate(LocalDate.of(2019,9,4));
+        inv.setLateFee(new BigDecimal("3.99"));
+        inv = invoiceDao.addInvoice(inv);
+
+        InvoiceItem invoItem = new InvoiceItem();
+        invoItem.setInvoiceId(inv.getInvoiceId());
+        invoItem.setItemId(it.getItemId());
+        invoItem.setQuantity(3);
+        invoItem.setUnitRate(new BigDecimal("19.99"));
+        invoItem.setDiscount(new BigDecimal("10.15"));
+
+        invoItem= invoiceItemDao.addInvoiceItem(invoItem);
+
+        invoItem.setUnitRate(new BigDecimal("9.99"));
+        invoItem.setDiscount(new BigDecimal("4.50"));
+
+        invoiceItemDao.updateInvoiceItem(invoItem);
+
+        InvoiceItem invoItem2 = invoiceItemDao.getInvoiceItem(invoItem.getInvoiceItemId());
+
+        assertEquals(invoItem,invoItem2);
+    }
 
 }
