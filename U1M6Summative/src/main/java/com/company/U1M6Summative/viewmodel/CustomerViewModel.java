@@ -11,10 +11,19 @@ import java.util.Objects;
 
 public class InvoiceViewModel {
     private int id;
-    private Customer customer;
     private Invoice invoice;
-    private InvoiceItem invoiceItem;
-    private List<Item> items;
+    private Customer customer;
+    private Item item;
+    private List<InvoiceItem> invoiceItem;
+
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
 
     public int getId() {
         return id;
@@ -32,28 +41,20 @@ public class InvoiceViewModel {
         this.customer = customer;
     }
 
-    public Invoice getInvoice() {
-        return invoice;
-    }
-
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
-    }
-
-    public InvoiceItem getInvoiceItem() {
+    public List<InvoiceItem> getInvoiceItem() {
         return invoiceItem;
     }
 
-    public void setInvoiceItem(InvoiceItem invoiceItem) {
+    public void setInvoiceItem(List<InvoiceItem> invoiceItem) {
         this.invoiceItem = invoiceItem;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public Item getItem() {
+        return item;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setItems(Item item) {
+        this.item = item;
     }
 
     @Override
@@ -61,15 +62,15 @@ public class InvoiceViewModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceViewModel that = (InvoiceViewModel) o;
-        return id == that.id &&
-                customer.equals(that.customer) &&
-                invoice.equals(that.invoice) &&
-                invoiceItem.equals(that.invoiceItem) &&
-                items.equals(that.items);
+        return getId() == that.getId() &&
+                Objects.equals(getInvoice(), that.getInvoice()) &&
+                Objects.equals(getCustomer(), that.getCustomer()) &&
+                Objects.equals(getInvoiceItem(), that.getInvoiceItem()) &&
+                Objects.equals(getItem(), that.getItem());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, customer, invoice, invoiceItem, items);
+        return Objects.hash(getId(), getInvoice(), getCustomer(), getInvoiceItem(), getItem());
     }
 }

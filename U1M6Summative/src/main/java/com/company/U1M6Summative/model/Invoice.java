@@ -2,6 +2,7 @@ package com.company.U1M6Summative.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ public class Invoice {
     private LocalDate orderDate;
     private LocalDate pickupDate;
     private LocalDate returnDate;
-    private double lateFee;
+    private BigDecimal lateFee;
 
     public int getInvoiceId() {
         return invoiceId;
@@ -55,11 +56,11 @@ public class Invoice {
         this.returnDate = returnDate;
     }
 
-    public double getLateFee() {
+    public BigDecimal getLateFee() {
         return lateFee;
     }
 
-    public void setLateFee(double lateFee) {
+    public void setLateFee(BigDecimal lateFee) {
         this.lateFee = lateFee;
     }
 
@@ -68,12 +69,12 @@ public class Invoice {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Invoice invoice = (Invoice) o;
-        return invoiceId == invoice.invoiceId &&
-                customerId == invoice.customerId &&
-                Double.compare(invoice.lateFee, lateFee) == 0 &&
-                orderDate.equals(invoice.orderDate) &&
-                pickupDate.equals(invoice.pickupDate) &&
-                returnDate.equals(invoice.returnDate);
+        return getInvoiceId() == invoice.getInvoiceId() &&
+                getCustomerId() == invoice.getCustomerId() &&
+                Objects.equals(getOrderDate(), invoice.getOrderDate()) &&
+                Objects.equals(getPickupDate(), invoice.getPickupDate()) &&
+                Objects.equals(getReturnDate(), invoice.getReturnDate()) &&
+                Objects.equals(getLateFee(), invoice.getLateFee());
     }
 
     @Override
