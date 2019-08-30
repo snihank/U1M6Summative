@@ -145,9 +145,16 @@ public class CustomerDaoJdbcTemplateImplTest {
 
         Customer cust2 = customerDao.getCustomer(cust.getCustomerId());
 
-        assertEquals(cust,cust2);
-
+        assertEquals(cust2,cust);
 
     }
+    /*
+     private int customerId;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String company;
+    private String phone;
+     */
 
 }

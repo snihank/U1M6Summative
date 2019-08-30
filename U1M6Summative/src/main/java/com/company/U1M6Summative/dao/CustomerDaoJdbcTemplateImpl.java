@@ -180,8 +180,8 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
         jdbcTemplate.update(UPDATE_CUSTOMER_SQL,
                 customer.getFirstName(),
                 customer.getLastName(),
+                customer.getEmail(),
                 customer.getCompany(),
-                customer.getPhone(),
                 customer.getPhone(),
                 customer.getCustomerId());
     }
