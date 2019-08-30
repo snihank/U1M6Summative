@@ -46,14 +46,16 @@ public class InvoiceItemDaoJdbcTemplateImplTest {
         invoiceItemList.stream()
                 .forEach(invoiceItem -> invoiceItemDao.deleteInvoiceItem(invoiceItem.getInvoiceItemId()));
 
+
         invoiceList.stream()
                 .forEach(invoice -> invoiceDao.deleteInvoice(invoice.getInvoiceId()));
 
-        customerList.stream()
-                .forEach(customer -> customerDao.deleteCustomer(customer.getCustomerId()));
-
         itemList.stream()
                 .forEach(item -> itemDao.deleteItem(item.getItemId()));
+
+
+        customerList.stream()
+                .forEach(customer -> customerDao.deleteCustomer(customer.getCustomerId()));
     }
 
     @After
