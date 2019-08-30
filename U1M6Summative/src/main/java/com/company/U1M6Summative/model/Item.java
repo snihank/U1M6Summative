@@ -2,6 +2,7 @@ package com.company.U1M6Summative.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Item {
@@ -10,7 +11,7 @@ public class Item {
     private int itemId;
     private String name;
     private String description;
-    private double dailyRate;
+    private BigDecimal dailyRate;
 
     public int getItemId() {
         return itemId;
@@ -36,11 +37,11 @@ public class Item {
         this.description = description;
     }
 
-    public double getDailyRate() {
+    public BigDecimal getDailyRate() {
         return dailyRate;
     }
 
-    public void setDailyRate(double dailyRate) {
+    public void setDailyRate(BigDecimal dailyRate) {
         this.dailyRate = dailyRate;
     }
 
@@ -50,9 +51,9 @@ public class Item {
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
         return getItemId() == item.getItemId() &&
-                Double.compare(item.getDailyRate(), getDailyRate()) == 0 &&
                 Objects.equals(getName(), item.getName()) &&
-                Objects.equals(getDescription(), item.getDescription());
+                Objects.equals(getDescription(), item.getDescription()) &&
+                Objects.equals(getDailyRate(), item.getDailyRate());
     }
 
     @Override

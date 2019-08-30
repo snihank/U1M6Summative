@@ -73,7 +73,13 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
 
     @Override
     public void updateCustomer(Customer customer) {
-
+        jdbcTemplate.update(UPDATE_CUSTOMER_SQL,
+                customer.getFirstName(),
+                customer.getLastName(),
+                customer.getCompany(),
+                customer.getPhone(),
+                customer.getPhone(),
+                customer.getCustomerId());
     }
 
     @Override
@@ -92,7 +98,6 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
         customer.setPhone(rs.getString("phone"));
 
         return customer;
-
     }
 
 }
