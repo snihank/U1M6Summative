@@ -3,11 +3,9 @@ package com.company.U1M6Summative.controller;
 import com.company.U1M6Summative.model.Customer;
 import com.company.U1M6Summative.service.ServiceLayer;
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
 import org.springframework.http.HttpStatus;
-=======
->>>>>>> 417e35371d327df83332a3a1674f70b970ea5c6d
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.List;
 
@@ -15,7 +13,6 @@ import java.util.List;
 public class RetailStoreController {
     @Autowired
     private ServiceLayer serviceLayer;
-<<<<<<< HEAD
 
 
 //    ReadAllCustomers
@@ -96,13 +93,6 @@ public class RetailStoreController {
 //
 //    }
 
-
-
-
-
-
-=======
->>>>>>> 417e35371d327df83332a3a1674f70b970ea5c6d
 
 //    @RequestMapping(value="/customers", method = RequestMethod.GET)
 //    public Customer getAllCustomers() {
